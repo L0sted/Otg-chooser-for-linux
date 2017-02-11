@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MassStorage1=/home/pi/lolusb.img
-MassStorage2=/home/pi/usbdrive.img
+MassStorage1=/home/pi/FirstUSB.img
+MassStorage2=/home/pi/SecondUSB.img
 
 function dd_create {
 #Mass storage disk creator, just a raw image 
@@ -26,12 +26,12 @@ esac
 DIALOG=${DIALOG=dialog}
 tempfile=`mktemp 2>/dev/null` || tempfile=/tmp/test$$
 trap "rm -f $tempfile" 0 1 2 5 15
-$DIALOG --clear --title "Otg" \
-        --menu "Выберите режим otg:" 12 50 10 \
-        "1"  "usb ethernet" \
-        "2"  "usb public" \
-        "3"  "usb crypted" \
-	"4"  "stop otg" 2> $tempfile
+$DIALOG --clear --title "OTG" \
+        --menu "Choice OTG mode:" 12 50 10 \
+        "1"  "Usb Ethernet" \
+        "2"  "Mass storage device 1" \
+        "3"  "Mass storage device 2" \
+	"4"  "Disable OTG" 2> $tempfile
 
 retval=$?
 choice=`cat $tempfile`
@@ -39,7 +39,7 @@ case $retval in
   0)
     apply_choise;;
   1)
-    echo "Отказ от ввода.";;
+    echo "Exit.";;
   255)
-    echo "Нажата клавиша ESC.";;
+    echo "Escape.";;
 esac
