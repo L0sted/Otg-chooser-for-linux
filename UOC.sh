@@ -14,7 +14,7 @@ echo -n 0 > /sys/bus/platform/devices/sunxi_usb_udc/otg_role ; modprobe -r {g_ma
 function apply_choise {
 case $choice in
  1)
-    prepare_to_switch ; modprobe g_ether iProduct=opizero iManufacturer= dev_addr=62:ef:11:22:11:22 host_addr=ea:c9:35:d4:66:87 use_eem=0 ; echo -n 2 > /sys/bus/platform/devices/sunxi_usb_udc/otg_role;;
+    prepare_to_switch ; modprobe g_ether iProduct=opi iManufacturer=Losted dev_addr=62:ef:11:22:11:22 host_addr=ea:c9:35:d4:66:87 use_eem=0 ; echo -n 2 > /sys/bus/platform/devices/sunxi_usb_udc/otg_role;;
  2)
     prepare_to_switch ; modprobe g_mass_storage file=$MassStorage1 stall=0 ; echo -n 2 > /sys/bus/platform/devices/sunxi_usb_udc/otg_role;;
  3)
